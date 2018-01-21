@@ -64,6 +64,19 @@ public:
    */
   void UpdateEKF(const Eigen::VectorXd &z);
 
+private:
+
+  /**
+   * Common part of equations for both filters after computing y
+   */
+  void UpdateInternal(const Eigen::VectorXd &y);
+
+
+  /**
+  * A helper method to normalize phi with period of pi
+  */
+  double normalizePhi(double phi);
+
 };
 
 #endif /* KALMAN_FILTER_H_ */
