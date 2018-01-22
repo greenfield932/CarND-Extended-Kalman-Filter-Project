@@ -1,11 +1,16 @@
 # Extended Kalman Filter Project
-Self-Driving Car Engineer Nanodegree Program
 
-This project contains an implementation of a kalman filter to estimate the state of a moving object of interest with noisy lidar and radar measurements. 
+This project contains an implementation of a Kalman filter to estimate the state of a moving object of interest with noisy lidar and radar measurements. 
 
-The code evaluated using the simulator. Resulted error in position and velocity of the moviding object calculated as [RMSE](https://en.wikipedia.org/wiki/Root-mean-square_deviation) and provided in simulator GUI and as a summary in console output.
+The code evaluated using the simulator. Resulted error in position and velocity of the moving object calculated as [RMSE](https://en.wikipedia.org/wiki/Root-mean-square_deviation) and provided in simulator GUI and as a summary in console output.
 
 # Results discussion
+
+There are 3 metric (mean RMSE, max RMSE and min RMSE over all steps) for each case (both LIDAR and RADAR measurement involved, LIDAR only, RADAR only).
+As seen in the table there is aproximmately 10 times diffeence in error increase when RADAR only used in comparison to kalman filter evaluation when both devices used or LIDAR only used.
+At the same time RMSE difference when LIDAR only used in comparison to both measurements is relatively small.
+According to these results using Kalman filters with RADAR only measurements may be insufficient for some cases.
+
 RMSE metric |   px     |    py   |    vx   |    vy
 ----------- | -------  | ------- | ------- | ------- 
 Both        |          |         |         |
@@ -51,7 +56,6 @@ OUTPUT: values provided by the c++ program to the simulator
 ["rmse_vy"]
 
 ---
-
 
 ## Running
 
