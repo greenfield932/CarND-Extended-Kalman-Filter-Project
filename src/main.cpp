@@ -26,6 +26,29 @@ std::string hasData(std::string s) {
   return "";
 }
 
+const int MinCondition = 0;
+const int MaxCondition = 1;
+
+void updateMinMax(VectorXd& container, const VectorXd& update_data, int condition)
+{
+    if(container.size() != update_data.size()) return;
+    
+    for(int i=0;i<container.size();++i){
+        if(condition == MaxCondition && (container(i) < update_data(i)) ||
+            condition == MinCondition  && (container(i) > update_data(i))){
+            container(i) = update_data(i);
+        }        
+    }
+}
+
+void printSummary(vector<VectorXd>& RMSE_summary, size_t steps)
+{
+    cout<<"*************RMSE summary***************"<<endl;
+    cout<<"\tMean: "<<RMSE_summary[0](0)/double(steps)<<" "<<RMSE_summary[0](1)/double(steps)<<" "<<RMSE_summary[0](2)/double(steps)<<" "<<RMSE_summary[0](3)/double(steps)<<endl;
+    cout<<"\tMin:  "<<RMSE_summary[1](0)<<" "<<RMSE_summary[1](1)<<" "<<RMSE_summary[1](2)<<" "<<RMSE_summary[1](3)<<endl;
+    cout<<"\tMax:  "<<RMSE_summary[2](0)<<" "<<RMSE_summary[2](1)<<" "<<RMSE_summary[2](2)<<" "<<RMSE_summary[2](3)<<endl;
+}
+
 int main()
 {
   uWS::Hub h;
@@ -37,13 +60,22 @@ int main()
   Tools tools;
   vector<VectorXd> estimations;
   vector<VectorXd> ground_truth;
+  vector<VectorXd> RMSE_summary;
 
-  h.onMessage([&fusionEKF,&tools,&estimations,&ground_truth](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode) {
+  VectorXd tmp(4);
+  tmp<<0.,0.,0.,0.;
+
+  RMSE_summary.push_back(tmp);
+  RMSE_summary.push_back(tmp);
+  RMSE_summary.push_back(tmp);
+
+  size_t step = 0;
+
+  h.onMessage([&fusionEKF,&tools,&estimations,&ground_truth,&step,&RMSE_summary](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode) {
     // "42" at the start of the message means there's a websocket message event.
     // The 4 signifies a websocket message
     // The 2 signifies a websocket event
-  //  static size_t step = 0;
-
+    
     if (length && length > 2 && data[0] == '4' && data[1] == '2')
     {
 
@@ -127,12 +159,18 @@ int main()
 
     	  VectorXd RMSE = tools.CalculateRMSE(estimations, ground_truth);
 
-/*          if(step > 0 && (RMSE(0)>0.11 || RMSE(1)>0.11 || RMSE(2)>0.52 || RMSE(3)>0.52)){
-              cout<<"RMSE treshold exceed:"<<step<<" "<<RMSE(0)<<" "<<RMSE(1)<<" "<<RMSE(2)<<" "<<RMSE(3)<<endl;
-              //exit(1);
+          if(step == 1){
+              RMSE_summary[1] = RMSE;
+              RMSE_summary[2] = RMSE;
           }
+          
+          RMSE_summary[0]+=RMSE;
+	      updateMinMax(RMSE_summary[1], RMSE, MinCondition); 
+	      updateMinMax(RMSE_summary[2], RMSE, MaxCondition);
+
           step++;
-*/
+          printSummary(RMSE_summary, step);
+
           json msgJson;
           msgJson["estimate_x"] = p_x;
           msgJson["estimate_y"] = p_y;
