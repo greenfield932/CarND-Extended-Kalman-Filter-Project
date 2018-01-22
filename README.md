@@ -6,25 +6,25 @@ This project contains an implementation of a kalman filter to estimate the state
 The code evaluated using the simulator. Resulted error in position and velocity of the moviding object calculated as [RMSE](https://en.wikipedia.org/wiki/Root-mean-square_deviation) and provided in simulator GUI and as a summary in console output.
 
 # Results discussion
-RMSE metric |   px    |    py   |    vx   |    vy
------------ | ------- | ------- | ------- | ------- 
-test        |test     |ewfwe    | wqdqw   |  test 
-
-Both
-	Mean: 0.101144 0.0897438 0.722948 0.537216
-	Min:  0.0832621 0.0688891 0.451267 0.417613
-	Max:  0.242874 0.109475 4.29483 1.75481
-
-LIDAR only
-    Mean: 0.155385 0.114369 0.895262 0.534863
-	Min:  0.107757 0.0196827 0.63679 0.00127057
-	Max:  0.437515 0.131132 5.19984 0.897538
-
-
-RADAR only
-	Mean: 1.83898 1.64836 1.8947 1.71698
-	Min:  0.172504 0.0876373 0.626301 0.676337
-	Max:  11.5726 8.39656 9.28523 7.03935
+RMSE metric |   px     |    py   |    vx   |    vy
+----------- | -------  | ------- | ------- | ------- 
+Both        |          |         |         |
+----------- | -------  | ------- | ------- | ------- 
+mean        | 0.101144 |0.0897438|0.722948 |0.537216 
+min         | 0.0832621|0.0688891|0.451267 |0.417613
+max         | 0.242874 |0.109475 |4.29483  |1.75481
+----------- | -------  | ------- | ------- | ------- 
+LIDAR Only  |          |         |         |
+----------- | -------  | ------- | ------- | ------- 
+mean        | 0.155385 |0.114369 |0.895262 |0.534863
+min         | 0.107757 |0.0196827|0.63679  |0.00127057
+max         | 0.437515 |0.131132 |5.19984  |0.897538
+----------- | -------  | ------- | ------- | ------- 
+RADAR Only  |          |         |         |
+----------- | -------  | ------- | ------- | ------- 
+mean        | 1.83898  |1.64836  |1.8947   |1.71698
+min         | 0.172504 |0.0876373|0.626301 |0.676337
+max         | 11.5726  |8.39656  |9.28523  |7.03935
 
 # Installation and building
 
