@@ -6,9 +6,10 @@ This project contains an implementation of a kalman filter to estimate the state
 The code evaluated using the simulator. Resulted error in position and velocity of the moviding object calculated as [RMSE](https://en.wikipedia.org/wiki/Root-mean-square_deviation) and provided in simulator GUI and as a summary in console output.
 
 # Results discussion
-RMSE metric |   px    | py | vx | vy
------------ | ------- |  ------- | ------- 
-test        |test     |ewfwe     | wqdqw   
+RMSE metric |   px    |    py   |    vx   |    vy
+----------- | ------- | ------- | ------- | ------- 
+test        |test     |ewfwe    | wqdqw   |  test 
+
 Both
 	Mean: 0.101144 0.0897438 0.722948 0.537216
 	Min:  0.0832621 0.0688891 0.451267 0.417613
