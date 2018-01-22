@@ -7,18 +7,8 @@ The code evaluated using the simulator. Resulted error in position and velocity 
 
 # Results discussion
 RMSE metric |   px    | py | vx | vy
------------ | ------- |  ------- | ------- | ------- 
-Base                      |libapp.a             |✓|✓|[Lars Pontoppidan](https://github.com/Larpon)
-AdMob                     |libadmob.a           |✓|✓|[Lars Pontoppidan](https://github.com/Larpon)
-Analytics                 |libanalytics.a       |✓|✓|[Lars Pontoppidan](https://github.com/Larpon)
-~~Authentication~~	          |~~libauth.a~~          |in progress |:wrench: |[Isy](https://github.com/isipisi281)
-~~Realtime Database~~	        |~~libdatabase.a~~      |in progress |:wrench: |[greenfield932](https://github.com/greenfield932)
-~~Invites and Dynamic Links~~	|~~libinvites.a~~       | | |
-Cloud Messaging	          |libmessaging.a     |✓|✓|[Isy](https://github.com/isipisi281)
-Remote Config             |libremote_config.a   |✓|✓|[greenfield932](https://github.com/greenfield932)
-~~Storage~~	                  |~~libstorage.a~~       | | |
-
-
+----------- | ------- |  ------- | ------- 
+test        |test     |ewfwe     | wqdqw   
 Both
 	Mean: 0.101144 0.0897438 0.722948 0.537216
 	Min:  0.0832621 0.0688891 0.451267 0.417613
