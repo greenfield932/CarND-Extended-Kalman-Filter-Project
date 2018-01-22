@@ -42,7 +42,7 @@ int main()
     // "42" at the start of the message means there's a websocket message event.
     // The 4 signifies a websocket message
     // The 2 signifies a websocket event
-    static size_t step = 0;
+  //  static size_t step = 0;
 
     if (length && length > 2 && data[0] == '4' && data[1] == '2')
     {
@@ -127,11 +127,12 @@ int main()
 
     	  VectorXd RMSE = tools.CalculateRMSE(estimations, ground_truth);
 
-          if(step > 0 && (RMSE(0)>0.11 || RMSE(1)>0.11 || RMSE(2)>0.52 || RMSE(3)>0.52)){
+/*          if(step > 0 && (RMSE(0)>0.11 || RMSE(1)>0.11 || RMSE(2)>0.52 || RMSE(3)>0.52)){
               cout<<"RMSE treshold exceed:"<<step<<" "<<RMSE(0)<<" "<<RMSE(1)<<" "<<RMSE(2)<<" "<<RMSE(3)<<endl;
               //exit(1);
           }
           step++;
+*/
           json msgJson;
           msgJson["estimate_x"] = p_x;
           msgJson["estimate_y"] = p_y;
